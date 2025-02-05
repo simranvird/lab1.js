@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight Converter</title> <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+            padding: 20px;
+        }
+    
+        p {
+            font-size: 1.2em;
+            color: #333;
+            background: #fff;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+    
+</head>
+<body>
+    <script>
+        
+        function convertKgToLb(kg) {
+            return kg / 0.45359237;
+        }
+
+        function convertLbToKg(lb) {
+            return lb * 0.45359237;
+        }
+
+        let choice;
+        do {
+            choice = prompt("Input 1 for converting kg to lb, 2 for converting lb to kg, or 3 to exit:");
+        } while (choice !== "1" && choice !== "2" && choice !== "3");
+
+        if (choice !== "3") {
+            let value;
+            do {
+                value = prompt("Enter the numeric value you want to convert:");
+            } while (isNaN(value) || value.trim() === "");
+            
+            value = parseFloat(value);
+            let result, unitInput, unitOutput;
+
+            switch (choice) {
+                case "1":
+                    result = convertKgToLb(value);
+                    unitInput = "kg";
+                    unitOutput = "lb";
+                    break;
+                case "2":
+                    result = convertLbToKg(value);
+                    unitInput = "lb";
+                    unitOutput = "kg";
+                    break;
+            }
+
+            document.write(`<p>${value} ${unitInput} is equal to ${result.toFixed(3)} ${unitOutput}</p>`);
+        } else {
+            document.write("<p>Exiting the application.</p>");
+        }
+    </script>
+</body>
+</html>
